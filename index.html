@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 140px;
+            height: 140px;
+            background-image: url(./right.png);
+            background-position: left top;
+            animation: right 1s steps(12) infinite;
+            transition-property: left, top;
+            transition-duration: 1s;
+            transition-timing-function: linear;
+        }
+
+        @keyframes right {
+            from {
+                background-position: 0px 0px;
+            }
+
+            to {
+                background-position: -1680px 0px;
+            }
+        }
+
+        @keyframes left {
+            from {
+                background-position: 0px 0px;
+            }
+
+            to {
+                background-position: 1680px 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+
+    </div>
+    <script>
+        let da = document.querySelector('html')
+        let div = document.querySelector('div')
+        console.log(parseInt(div.offsetLeft));
+        da.addEventListener('click', function (e) {
+            if (div.offsetLeft < e.clientX) {
+                div.style.left = e.clientX + 'px'
+                div.style.top = e.clientY + 'px'
+                div.style.backgroundImage = 'url(./right.png)'
+                div.style.animation = 'right 1s steps(12) infinite'
+            } else {
+                div.style.left = e.clientX + 'px'
+                div.style.top = e.clientY + 'px'
+                div.style.backgroundImage = 'url(./left.png)'
+                div.style.animation = 'left 1s steps(12) infinite'
+            }
+        })
+    </script>
+</body>
+
+</html>
